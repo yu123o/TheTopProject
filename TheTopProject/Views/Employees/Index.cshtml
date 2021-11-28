@@ -1,0 +1,122 @@
+﻿@model IEnumerable<TheTopProject.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<link href="~/Tassets/css/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Tassets/css/style.css" rel="stylesheet" />
+
+
+<div class="content">
+
+    <div class="container t" style=" margin:0% 20% 0% 21%">
+        <h2 class="mb-5" style="text-align:center">Employee</h2>
+        <br /><br />
+        <div class="form-content form-inline">
+            <form asp-action="Index" asp-controller="Employees" class="inline" style="inset-inline:initial">
+                <div class="btn-group">
+
+                    <a asp-action="Index" asp-controller="Employees" class="btn btn-primary active" aria-current="page">All</a>
+                    <a asp-action="Newest" asp-controller="Employees" class="btn btn-primary">Newest</a>
+                </div>
+
+            </form>
+            <br />
+            <form asp-action="Search" class="form-inline md-form mr-auto mb-4 ">
+                <input class="form-control mr-sm-2" type="text" name="EmployeeName" placeholder="Employee Name" aria-label="Search" style="width:20%">
+                <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+        </div>
+        <br />
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr style="text-align:center">
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Fname)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Salary)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.JobTitle)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.DepartmentName)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.StartWorkTime)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fname)  @Html.DisplayFor(modelItem => item.Lname)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Salary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepartmentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @item.StartWorkTime.Date.ToShortDateString()
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                               
+                                <a asp-action="DeleteConfirmed1" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="spacer"><td colspan="100"></td></tr>
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="~/Tassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Tassets/js/main.js"></script>
+<script src="~/Tassets/js/owl.carousel.min.js"></script>
+<script src="~/Tassets/js/popper.min.js"></script>

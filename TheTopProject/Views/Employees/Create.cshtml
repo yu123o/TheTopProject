@@ -1,0 +1,90 @@
+﻿@model TheTopProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="container col-md-6" style=" margin:0% 40% 0% 21% ;align-content:center; text-align:center;">
+    <h1>Add new</h1>
+
+    <h4>Employee</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                    <div class="form-group ">
+                        <label asp-for="Fname" class="control-label ">First Name: </label>
+                        <input asp-for="Fname" class="form-control " />
+                        <span asp-validation-for="Fname" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group ">
+                        <label asp-for="Lname" class="control-label "> Last Name: </label>
+                        <input asp-for="Lname" class="form-control " />
+                        <span asp-validation-for="Lname" class="text-danger"></span>
+                    </div>
+                
+                <div class="form-group ">
+                    <label asp-for="Email" class="control-label  ">Email: </label>
+                    <input asp-for="Email" class="form-control " />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="Password" class="control-label">Password: </label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                  
+                    <div class="control-group">
+                        <label asp-for="Salary" class="control-label">Salary: </label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input asp-for="Salary" class="form-control" />
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="JobTitle" class="control-label">Job Title: </label>
+                    <input asp-for="JobTitle" class="form-control" />
+                    <span asp-validation-for="JobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="DepartmentName" class="control-label">Department Name: </label>
+                    @*<input asp-for="DepartmentName" class="form-control" />*@ 
+                    <select class="form-control form-control-sm" asp-for="DepartmentName">
+                        <option value="Accountant">Accountant</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+
+                </div>
+                <div class="form-group ">
+                    <label asp-for="PhoneNumber" class="control-label">Phone Number: </label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="Address" class="control-label">Address: </label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group " style="align-items:flex-end">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+    @*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+
+

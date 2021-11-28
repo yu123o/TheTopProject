@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<div class="span9">
+    <div class="content">
+        <div class="btn-controls">
+            @if (TempData["Aname"] != null || TempData["AEname"] != null)
+            {<div class="btn-box-row row-fluid">
+
+                    <a href="#" class="btn-box big span4">
+                        <i class=" icon-random"></i><b>@ViewBag.SalesAmount $</b>
+                        <p class="text-muted">
+                            Amount Of Sales
+                        </p>
+                    </a><a href="#" class="btn-box big span4">
+                        <i class="icon-user"></i><b>@ViewBag.NumberOfCustomer</b>
+                        <p class="text-muted">
+                            Users
+                        </p>
+                    </a><a href="#" class="btn-box big span4">
+                        <i class="icon-money"></i><b>@ViewBag.profits $</b>
+                        <p class="text-muted">
+                            Profit
+                        </p>
+                    </a>
+                </div>}
+                <br /><br /><br /><br /><br />
+                                        <div class="btn-box-row row-fluid">
+                                            <div class="span8">
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        @if (TempData["Aname"] != null || TempData["AEname"] != null)
+                                                        {
+                                                            <a asp-action="Index" asp-controller="Customers" class="btn-box small span4">
+                                                                <i class="icon-group"></i><b>Customer</b>
+
+                                                            </a>}
+                                                        @if (TempData["Aname"] != null)
+                                                        {
+                                                            <a asp-action="Index" asp-controller="Employees" class="btn-box small span4">
+                                                                <i class="icon-group"></i><b>Empolyee</b>
+                                                            </a><a asp-action="Index" asp-controller="Tasks" class="btn-box small span4">
+                                                                <i class="icon-exchange"></i><b>
+                                                                    Employee Task
+                                                                </b>
+                                                            </a>}
+                                                    </div>
+                                                </div>
+                                                @if (TempData["Aname"] != null)
+                                                {
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <a asp-action="Index" asp-controller="Sales" class="btn-box small span4">
+                                                                <i class="icon-save"></i><b> Sales</b>
+                                                            </a><a asp-action="Feedback" asp-controller="Admin" class="btn-box small span4">
+                                                                <i class="icon-bullhorn"></i><b>Users Feedback</b>
+                                                            </a><a asp-action="Index" asp-controller="Coupons" class="btn-box small span4">
+                                                                <i class="icon-sort-down"></i><b>
+                                                                    Coupons
+                                                                </b>
+                                                            </a>
+                                                        </div>
+                                                    </div>}
+                                                </div>
+                                                        
+                                           
+                                            <ul class="widget widget-usage unstyled span4">
+                                                @if (TempData["Aname"] != null || TempData["AEname"] != null)
+                                                {
+                                                    <li>
+                                                        <p>
+                                                            <strong>
+                                                                <a asp-action="PrintSales" asp-controller="Admin">Annual Report Of Sells</a>
+                                                            </strong>
+                                                            <span class="pull-right small muted"></span>
+                                                        </p>
+                                                        <div class="progress tight">
+                                                            <div class="bar" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <p>
+                                                            <strong>
+                                                                <a asp-action="MonthlyPrintSales" asp-controller="Admin">Monthly Report Of Sells</a>
+                                                            </strong> <span class="pull-right small muted"></span>
+                                                        </p>
+                                                        <div class="progress tight">
+                                                            <div class="bar bar-success" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <p>
+                                                            <strong>
+                                                                <a asp-action="FinancialMonthlyReports" asp-controller="Admin">Financial Monthly Report</a>
+                                                            </strong> <span class="pull-right small muted"></span>
+                                                        </p>
+                                                        <div class="progress tight">
+                                                            <div class="bar bar-warning" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+
+                                                        <p>
+                                                            <strong> <a asp-action="FinancialAnnualReports" asp-controller="Admin"> Financial Annual Report</a></strong>
+                                                            <span class="pull-right small muted"></span>
+                                                        </p>
+                                                        <div class="progress tight">
+                                                            <div class="bar bar-danger" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                                else if(TempData["EAname"] != null)
+                                                {
+                                                    <li>
+
+                                                        <p>
+                                                            <strong> <a asp-action="SalarySlip" asp-controller="Admin">Salary Slip</a></strong>
+                                                            <span class="pull-right small muted"></span>
+                                                        </p>
+                                                        <div class="progress tight">
+                                                            <div class="bar bar-danger" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+            
+                                            </div>
+            </div>
+
+    </div>
+
+</div>

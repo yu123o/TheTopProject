@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TheTopProject.Models.Design>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<section id="portfoli" class="portfoli" style="margin-top:5%;">
+
+    <div style="margin-left:10%;margin-right:10%">
+        <h1>Edit</h1>
+        <hr />
+        <table class="table" style="text-align:center">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Width)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Height)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Categroy.Title)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Width)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Height)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                            <img src="@Url.Content("~/assets/img/Design/" + item.Image)" style="width:30%" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categroy.Title)
+                        </td>
+
+                        <td>
+                            <a asp-action="DeleteConfirmed1" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </section>

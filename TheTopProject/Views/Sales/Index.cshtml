@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TheTopProject.Models.Sales>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<link href="~/Tassets/css/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Tassets/css/style.css" rel="stylesheet" />
+
+
+<div class="content" >
+
+    <div class="container t" style=" margin:0% 40% 0% 21%">
+        <h2 class="mb-5" style="text-align:center">Sales</h2>
+        <div class="form-content form-inline">
+            <form asp-action="Index" asp-controller="Sales" class="inline" style="inset-inline:initial">
+                <div class="btn-group">
+
+                    <a asp-action="Index" asp-controller="Sales" class="btn btn-primary active" aria-current="page">All</a>
+                    <a asp-action="Newest" asp-controller="Sales" class="btn btn-primary">Newest</a>
+                </div>
+            </form>
+           
+        </div>
+        <div class="table-responsive custom-table-responsive" >
+
+            <table class="table custom-table" >
+                <thead >
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Customer)
+                        </th>
+                       
+                        <th scope="col" >
+                            @Html.DisplayNameFor(model => model.Design)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CompanyRatio)
+                        </th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                    <tr scope="row">
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Customer.Fname)  @Html.DisplayFor(modelItem => item.Customer.Lname)
+
+                        </td>
+                        <td>
+                            <img src="@Url.Content("~/assets/img/Design/" + item.Design.Image)" style="width:40px" />
+                        </td>
+                        <td>
+                            @item.Date.Date.ToShortDateString()
+                        </td>
+                        <td>
+                            @{var x = item.CompanyRatio * item.Design.Cost;}
+                            @x
+                        </td>
+
+
+                    </tr>
+                        <tr class="spacer"><td colspan="100"></td></tr>
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="~/Tassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Tassets/js/main.js"></script>
+<script src="~/Tassets/js/owl.carousel.min.js"></script>
+<script src="~/Tassets/js/popper.min.js"></script>

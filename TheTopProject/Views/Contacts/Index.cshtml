@@ -1,0 +1,114 @@
+﻿@model IEnumerable<TheTopProject.Models.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@*<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">*@
+
+@*<link href="~/Tassets/css/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Tassets/css/owl.carousel.min.css" rel="stylesheet"/>
+<link href="~/Tassets/css/style.css" rel="stylesheet" />
+
+
+<div class="content">
+
+    <div class="container t" style=" margin:0% 20% 0% 21%">
+        <h2 class="mb-5" style="text-align:center">Users Feedback</h2>
+        <div class="btn-group">
+            <a asp-action="OrderByDescendingByTime" asp-controller="Admin" class="btn btn-primary active" aria-current="page">All</a>
+            <a asp-action="Approved" asp-controller="Admin" class="btn btn-primary">Approved</a>
+            <a asp-action="Unapproved" asp-controller="Admin"  class="btn btn-primary">Unapproved</a>
+            <a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Oldest</a>
+        </div>
+      
+      
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Subject)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Message)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Time)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Approve)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Subject)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Time)
+                            </td>
+                            <td>
+                                @item.Approve
+
+                                <div>
+
+                                </div>
+                            </td>
+
+                            <td>
+                                @if (item.Approve == false)
+                                {
+                                    <a asp-action="Approve"  asp-route-id="@item.Id">Approve</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Unapprove"  asp-route-id="@item.Id">Unapprove</a>
+                                }
+                            </td>
+                        </tr>
+                        <tr class="spacer"><td colspan="100"></td></tr>
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="~/Tassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Tassets/js/main.js"></script>
+<script src="~/Tassets/js/owl.carousel.min.js"></script>
+<script src="~/Tassets/js/popper.min.js"></script>

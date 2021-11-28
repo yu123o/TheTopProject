@@ -1,0 +1,42 @@
+﻿@model TheTopProject.Models.Coupon
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div style="margin:5% 20% 0% 40% ">
+    <h1>Create</h1>
+
+    <h4>Coupon</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6" style="margin-left:4%">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Code" class="control-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FinishTime" class="control-label"></label>
+                    <input asp-for="FinishTime" class="form-control" />
+                    <span asp-validation-for="FinishTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+

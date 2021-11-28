@@ -1,0 +1,177 @@
+﻿<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>The Top</span></h2>
+                <p class="animate__animated fanimate__adeInUp" style="color: #fc8129">
+                    Platform to launching creativity, collecting designers and buyers, and facilitating the buying and selling process.
+                </p>
+                <a href="/Home/AboutUs" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More about us</a>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+        <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)" />
+        </g>
+        <g class="wave2">
+            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)" />
+        </g>
+        <g class="wave3">
+            <use xlink:href="#wave-path" x="50" y="9" fill="#fff" />
+        </g>
+    </svg>
+
+</section><!-- End Hero -->
+<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css">
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+<section id="portfolio" class="portfolio" style="margin-top:5%">
+    <div class="container">
+
+        <div class="section-title aos-init aos-animate" data-aos="zoom-out">
+            <h2>ADVERTISEMENT</h2>
+
+
+            <hr />
+            <div class="column">
+                <p>@ViewBag.cat Category </p>
+                <a asp-controller="Designs" asp-action="Create" class="back-to-top d-flex align-items-center justify-content-center" title="Add Design" style="align-content:flex-end"><i class="bx bx-plus"></i></a>
+            </div>
+        </div>
+        @model List<Design>
+        <div class="bootstrap-iso" style="font-family: cursive;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <form asp-action="SearchByDate" class="form-horizontal">
+                            <div class="form-group ">
+                                <label class="control-label col-sm-2 requiredField" for="date">
+                                    From
+                                    <span class="asteriskField">
+                                        *
+                                    </span>
+                                </label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="firstDate" placeholder="MM/DD/YYYY" type="text">
+                                    </div>
+                                </div>
+
+
+                                <label class="control-label col-sm-2 requiredField" for="date">
+                                    To
+                                    <span class="asteriskField">
+                                        *
+                                    </span>
+                                </label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="lastDate" placeholder="MM/DD/YYYY" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit" style="border-color: #ef6603; color: #ef6603; ">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5> @ViewBag.FirstTime </h5>
+        <br /><br /><br />
+
+
+
+        <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1507.85px;">
+            
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+                        <a href="#">
+                            <div class="portfolio-img">
+                                <img src="@Url.Content("~/assets/img/Design/" + item.Image)" class="img-fluid" alt="">
+                            </div>
+                        </a>
+                        <div class="portfolio-info">
+                            <h4>Size: @item.Width x @item.Height</h4>
+                            <p>Cost: @item.Cost $ </p>
+                            <h6 style="color:white">Date: @item.AddDate.Date.ToShortDateString()</h6>
+
+                            <input name="DesignId" value="@item.Id" hidden />
+                            <button asp-action="AddToCart" class="preview-link" title="Add To Cart" style="background-color:transparent;border:none"><i class="bx bx-shopping-bag"></i></button>
+
+                            <a href="/Home/Profile/@item.Id" class="details-link" title="Designer Profile"><i class="bx bx-user"></i></a>
+                        </div>
+                    </div>
+                    }
+                
+            
+
+
+        </div>
+
+    </div>
+</section>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
+
+<script>
+    if (@ViewBag.Login!= null)
+        alert(@ViewBag.Login)
+    $(document).ready(function () {
+        var date_input1 = $('input[name="firstDate"]'); //our date input has the name "date"
+        var date_input2 = $('input[name="lastDate"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input1.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+        date_input2.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+
+</script>
+

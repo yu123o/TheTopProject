@@ -1,0 +1,127 @@
+﻿@model IEnumerable<TheTopProject.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<link href="~/Tassets/css/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Tassets/css/style.css" rel="stylesheet" />
+
+
+<div class="content">
+
+    <div class="container t" style=" margin:0% 20% 0% 21%">
+        <h2 class="mb-5" style="text-align:center">Tasks</h2>
+        <br /> 
+      
+       
+        <br />
+        <div class="form-content form-inline">
+            <form asp-action="Index" asp-controller="Tasks" class="inline" style="inset-inline:initial">
+                <div class="btn-group">
+                    <a asp-action="Index" asp-controller="Tasks" class="btn btn-primary active" aria-current="page">All</a>
+
+                    <a asp-action="Finish" asp-controller="Tasks" class="btn btn-primary ">Finished</a>
+                    <a asp-action="UnFinish" asp-controller="Tasks" class="btn btn-primary">not Finished</a>
+                </div>
+            </form>
+            
+        </div>
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr style="text-align:center">
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Subject)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.TaskContent)
+                        </th>
+
+                        <th scope="col">
+                            Added Time
+                        </th>
+
+                        <th scope="col">
+                            Finished Time
+                        </th>
+
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Employee)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Done)
+                        </th>
+                        <th scope="col">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                    <tr scope="row">
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskContent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InsertTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FinishTime)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.Email)
+                        </td>
+                        <td>
+                            @item.Done
+                        </td>
+                        <td>
+                            @if (item.Done == false)
+                            {
+                                <a asp-action="Finished" asp-route-id="@item.Id">Finished</a>
+                            }
+                            else
+                            {
+                                <a asp-action="UnFinished" asp-route-id="@item.Id">UnFinished</a>
+                            }
+                        </td>
+                        <td>
+                            
+                            <a asp-action="DeleteConfirmed1" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                        <tr class="spacer"><td colspan="100"></td></tr>
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="~/Tassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Tassets/js/main.js"></script>
+<script src="~/Tassets/js/owl.carousel.min.js"></script>
+<script src="~/Tassets/js/popper.min.js"></script>

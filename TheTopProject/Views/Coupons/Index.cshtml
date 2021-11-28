@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TheTopProject.Models.Coupon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<link href="~/Tassets/css/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Tassets/css/style.css" rel="stylesheet" />
+
+
+<div class="content">
+
+    <div class="container t" style=" margin:0% 20% 0% 21%">
+        <h2 class="mb-5" style="text-align:center">Coupon</h2>
+        <br />
+    
+
+        <br />
+
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr style="text-align:center">
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Code)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.StartTime)
+                        </th>
+
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.FinishTime)
+                        </th>
+
+
+
+                        <th scope="col">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center">
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FinishTime)
+                            </td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="DeleteConfirmed1" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="spacer"><td colspan="100"></td></tr>
+
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="~/Tassets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Tassets/js/main.js"></script>
+<script src="~/Tassets/js/owl.carousel.min.js"></script>
+<script src="~/Tassets/js/popper.min.js"></script>

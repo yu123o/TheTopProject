@@ -1,0 +1,38 @@
+﻿
+<nav id="navbar" class="navbar">
+    <ul>
+        @if (TempData["email"] != null)
+        {
+            <li class="dropdown">
+                <a asp-area="Home" asp-page="/Index"><span>Hello @TempData["name"]!</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+
+                    @*<li>
+                        <form asp-area="Home" asp-action="LogOut" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>*@
+                    <li><a asp-area="Home" asp-action="OwnProfile" asp-controller="Home">My Profile</a></li>
+                    <li><a asp-area="Home" asp-action="LogOut" asp-controller="Home">Logout</a></li>
+
+                </ul>
+
+            </li>
+            <li><a class="nav-link scrollto" asp-action="Index" asp-controller="Carts" title="Cart"><i class="bi bi-cart3"></i></a></li>
+            <li style="color:white;font-size:10px">@TempData["countOfElement"]</li>
+        }
+        else
+        {
+
+            <li class="dropdown">
+                <a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+
+                    <li><a href="/Home/Login">Login</a></li>
+                    <li><a href="/Customers/Create">Sign Up</a></li>
+
+                </ul>
+            </li>
+        }
+    </ul>
+    </nav>

@@ -1,0 +1,164 @@
+﻿@model TheTopProject.Models.Customer
+@{
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<style>
+    .textarea--style-6 {
+        line-height: 1.2;
+        min-height: 120px;
+        padding: 10px 20px;
+    }
+
+    .input--style-6, .textarea--style-6 {
+        background: transparent;
+        line-height: 38px;
+        border: 1px solid #cccccc;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #666;
+        font-size: 15px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        padding: 0 20px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    textarea {
+        outline: none;
+        margin: 0;
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+        font-size: 14px;
+    }
+
+   
+    textarea {
+       
+        
+        text-rendering: auto;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        cursor: text;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        column-count: initial !important;
+        margin: 0em;
+        border-width: 1px;
+        border-style: solid;
+        border-image: initial;
+        padding: 2px;
+        border-radius: 2px;
+    }
+</style>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<section id="portfoli" class="portfoli" style="margin-top: 5%; margin-left: 10%; margin-right: 10%">
+    
+
+    <div class="container rounded bg-white mt-5">
+
+        <div class="section-title aos-init aos-animate" data-aos="zoom-out">
+            <h2>Edit Profile</h2>
+
+
+            <hr />
+            <a asp-controller="Home" asp-action="OwnProfile" class="nav-link scrollto"> <span>Back</span></a>
+        </div>
+        <div class="row">
+
+            <div class="col-md-8">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="RegistrationTime" class="form-control" />
+                    <input type="hidden" asp-for="Password" class="form-control" />
+
+                    <div class="p-3 py-5">
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label asp-for="Fname" class="control-label"></label>
+                                    <input asp-for="Fname" class="form-control" />
+                                    <span asp-validation-for="Fname" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Lname" class="control-label"></label>
+                                    <input asp-for="Lname" class="form-control" />
+                                    <span asp-validation-for="Lname" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber" class="control-label"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+
+
+                                <div class="form-group">
+                                    <label asp-for="Subject" class="control-label"></label>
+                                    <input asp-for="Subject" class="form-control" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <textarea asp-for="Description" class="form-control textarea--style-6" ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-right"><input type="submit" value="Save" class="btn btn-primary" /></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

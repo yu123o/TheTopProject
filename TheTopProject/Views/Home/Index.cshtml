@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>The Top</span></h2>
+                <p class="animate__animated fanimate__adeInUp" style="color: #fc8129">
+                    Platform to launching creativity, collecting designers and buyers, and facilitating the buying and selling process.
+                </p>
+                <a href="/Home/AboutUs" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More about us</a>
+            </div>
+        </div>
+
+        
+
+
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+        <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)" />
+        </g>
+        <g class="wave2">
+            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)" />
+        </g>
+        <g class="wave3">
+            <use xlink:href="#wave-path" x="50" y="9" fill="#fff" />
+        </g>
+    </svg>
+
+</section><!-- End Hero -->
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+
+        <div class="section-title aos-init aos-animate container" data-aos="zoom-out">
+            <h2>Category</h2>
+            <hr />
+            <form asp-action="Search" class="form-inline md-form mr-auto mb-4 ">
+                <input class="form-control mr-sm-2" type="text" name="CategoryName" placeholder="Category Name" aria-label="Search" style="width:20%">
+                <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+            <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+         
+            <p>@ViewBag.search Category </p>
+        </div>
+
+
+        @model List<Category>
+
+        <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1507.85px;">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+                    <a href="/Home/Designs/@item.Id">
+                        <div class="portfolio-img"><img src="@Url.Content("~/assets/img/Category/" + item.Image)" class="img-fluid" alt=""></div>
+                    </a>
+                    <div class="portfolio-info">
+                        <h4>@item.Title</h4>
+
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+</section>
+<script>
+    alert(ViewBag.b)
+</script>
+
+
+
+
+
+
+
+
+
+
